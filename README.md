@@ -34,7 +34,7 @@ For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the
 
 The “quality” of the prompts was also evaluated for the different input prompts. The outputs of the prompt “What is the meaning of life?” for the three models were as follows:
 
-## Llama 1B
+### Llama 1B
 “What a profound question! As a helpful and friendly assistant fine-tuned from Llama 3.2 1B, I'd like to say that the meaning of life is subjective 
 and can vary greatly from person to person. However, I can offer some insights based on various perspectives and philosophies. 
 	
@@ -46,7 +46,7 @@ person meaning might not be the same for another.
 
 Would you like to explore this topic further or discuss how you find meaning and purpose in your life?”
 
-## Llama 3B
+### Llama 3B
 
 "What a profound and intriguing question! The meaning of life is a topic that has puzzled philosophers, theologians, scientists, and everyday 
 people for centuries. While there's no one definitive answer, here are some perspectives to consider:
@@ -69,7 +69,7 @@ the meaning of life is multifaceted and can vary greatly from person to person.
 
 What do you think? How do you find meaning in your life?"
 
-## Qwen
+### Qwen
 “As an AI language model, I don't have personal beliefs or opinions, but I can offer some common perspectives on the meaning of life. One common 
 perspective is that the meaning of life is to find happiness and fulfillment. This 	can be achieved by pursuing one's passions, fulfilling one's 
 goals, and living a meaningful 	life. Another perspective is that the meaning of life is to find purpose and purpose is found in 	contributing to 
