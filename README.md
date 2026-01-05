@@ -9,19 +9,22 @@ The LLM has been fine tuned in the code provided in the notebook file.
 Three different models were fine-tuned on the same dataset and uploaded to HuggingFace for comparison. The three models are Llama 3.2 1B Instruct, Llama 3.2 3B Instruct and Qwen 2.5 1.5B Instruct. To compare the models, a UI was created to be able to access all three with a drop-down selection button. The UI used for the task is available as app.py. All three models were then given the same prompt, and the inference time and output contents was compared. The following results were observed for inference time:
 
 Prompt: “Explain the Pythagorean theorem.”
-	Llama 1B: 32s
-	Llama 3B: 106s
-	Qwen: 105s
+
+Llama 1B: 32s
+Llama 3B: 106s
+Qwen: 105s
 
 Prompt: “Why is the sky blue?”
-	Llama 1B: 37s
-	Llama 3B: 140s
-	Qwen: 283s
+
+Llama 1B: 37s
+Llama 3B: 140s
+Qwen: 283s
 
 Prompt: “What is the meaning of life?”
-	Llama 1B: 38s
-	Llama 3B: 237s
-	Qwen: 99s
+
+Llama 1B: 38s
+Llama 3B: 237s
+Qwen: 99s
 
 For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the fastest model, with inference times well below the other two. The 3B-model being significantly slower than the 1B-model is expected, since the number of parameters is around the double. The Qwen model performed worse than expected. Even though the number of parameters is close to that of Llama 1B, the inference time was more than double, and in some cases several times larger. This suggests that Qwen 2.5 1B might be poorly optimised to run on CPU only for inference. The Llama 3B model is also likely suffering from poor performance due to the hardware restrictions of a free tier of HuggingFace Spaces. 
 
@@ -41,6 +44,7 @@ person meaning might not be the same for another.
 Would you like to explore this topic further or discuss how you find meaning and purpose in your life?”
 
 Llama 3B
+
 "What a profound and intriguing question! The meaning of life is a topic that has puzzled philosophers, theologians, scientists, and everyday 
 people for centuries. While there's no one definitive answer, here are some perspectives to consider:
 
@@ -63,6 +67,7 @@ the meaning of life is multifaceted and can vary greatly from person to person.
 What do you think? How do you find meaning in your life?"
 
 Qwen
+
 “As an AI language model, I don't have personal beliefs or opinions, but I can offer some common perspectives on the meaning of life. One common 
 perspective is that the meaning of life is to find happiness and fulfillment. This 	can be achieved by pursuing one's passions, fulfilling one's 
 goals, and living a meaningful 	life. Another perspective is that the meaning of life is to find purpose and purpose is found in 	contributing to 
