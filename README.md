@@ -78,6 +78,7 @@ while others believe that the meaning of life is to find enlightenment and spiri
 personal concept that varies from person to person. It is up to each individual to determine what brings them happiness, fulfillment, and purpose, 
 and to find meaning in their life journey.”
 
+### Evaluation
 Since quality can be subjective, it was hard to define a metric of how good each response is. The response of Llama 3B is the longest, and even has highlighted words to make reading easier. The response of the Qwen model share some similarities with that of Llama 1B, despite being a completely different model. This could probably be explained as an effect of fine-tuning, as all models were fine-tuned on the same dataset and therefore learned to respond in similar ways.
 
 In the end, Llama 1B was chosen as the model best fit for the task of running CPU inference on HuggingFace Spaces, mostly due to the inference time being so much lower than the other two models. While the output text of the other two models is probably of at least equal quality (if not higher), the slow inference made them feel less usable than Llama 1B.
