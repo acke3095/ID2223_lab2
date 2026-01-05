@@ -4,10 +4,7 @@ import gradio as gr
 from huggingface_hub import hf_hub_download
 from llama_cpp import Llama
 
-# ----------------------------------------------------
 # Model registry
-# ----------------------------------------------------
-
 AVAILABLE_MODELS = {
     "Llama 3.2 1B Instruct": {
         "repo_id": "axelblenna/model",
@@ -39,9 +36,36 @@ AVAILABLE_MODELS = {
     },
 }
 
-# ----------------------------------------------------
-# Global state
-# ----------------------------------------------------
+# CSS styling
+CUSTOM_STYLE = """
+.gradio-container {
+    background-color: #1B3822;
+}
+
+.chatbot {
+    background-color: #020617;
+    border-radius: 8px;
+}
+
+textarea {
+    background-color: #020617;
+    color: #e5e7eb;
+    border: 1px solid #1e293b;
+}
+
+button {
+    background-color: #2563eb;
+    color: white;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+"""
+
+# Global variables ###########################
 
 llm = None
 llm_lock = threading.Lock()
@@ -52,9 +76,8 @@ CURRENT_PROMPT_TYPE = ""
 
 MAX_TURNS = 4  # prevent context overflow
 
-# ----------------------------------------------------
-# Model loading (SAFE)
-# ----------------------------------------------------
+
+# Model loading ##############################
 
 def load_model(model_name):
     global llm, SYSTEM_PROMPT, CURRENT_MODEL_NAME, CURRENT_PROMPT_TYPE
@@ -80,7 +103,7 @@ def load_model(model_name):
     SYSTEM_PROMPT = model_info["system_prompt"]
     CURRENT_MODEL_NAME = model_name
 
-    # IMPORTANT: reset chat history on model switch
+    # Reset chat history on model switch
     return f"**Current model:** {model_name}", []
 
 
@@ -88,9 +111,8 @@ def load_model(model_name):
 DEFAULT_MODEL = "Llama 3.2 1B LoRA + Training"
 load_model(DEFAULT_MODEL)
 
-# ----------------------------------------------------
-# Prompt building
-# ----------------------------------------------------
+
+# Prompt building #########################################
 
 def build_prompt(history, user_msg):
     history = history[-MAX_TURNS:]
@@ -146,9 +168,8 @@ def build_llama_prompt(history, user_msg):
 
     return prompt
 
-# ----------------------------------------------------
-# Chat handler (STABLE)
-# ----------------------------------------------------
+
+# Chat handler ##################################################
 
 def chat_handler(message, history):
     model_name = CURRENT_MODEL_NAME
@@ -193,11 +214,10 @@ def chat_handler(message, history):
 
     yield history, history, ""
 
-# ----------------------------------------------------
-# Gradio UI
-# ----------------------------------------------------
 
-with gr.Blocks() as interface:
+# Gradio UI ###################################################
+
+with gr.Blocks(css=CUSTOM_STYLE) as interface:
     gr.Markdown("# ID2223 Lab 2: Fine-tune LLM")
 
     model_selector = gr.Dropdown(
