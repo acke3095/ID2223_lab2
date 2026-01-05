@@ -25,7 +25,7 @@ Prompt: “What is the meaning of life?”
 
 For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the fastest model, with inference times well below the other two. The 3B-model being significantly slower than the 1B-model is expected, since the number of parameters is around the double. The Qwen model performed worse than expected. Even though the number of parameters is close to that of Llama 1B, the inference time was more than double, and in some cases several times larger. This suggests that Qwen 2.5 1B might be poorly optimised to run on CPU only for inference. The Llama 3B model is also likely suffering from poor performance due to the hardware restrictions of a free tier of HuggingFace Spaces. 
 
-The “quality” of the prompts was also evaluated for the different input prompts. The outputs of the prompt “What is the meaning of life” for the three models were as follows:
+The “quality” of the prompts was also evaluated for the different input prompts. The outputs of the prompt “What is the meaning of life?” for the three models were as follows:
 
 	Llama 1B
 	“What a profound question! As a helpful and friendly assistant fine-tuned from Llama 3.2 1B, I'd like to say that the meaning of life is subjective and can vary greatly from person to person. However, I can offer some insights based on various perspectives and philosophies. 
