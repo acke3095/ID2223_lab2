@@ -8,20 +8,27 @@ The LLM has been fine tuned in the code provided in the notebook file.
 # Comparison of Different Models
 Three different models were fine-tuned on the same dataset and uploaded to HuggingFace for comparison. The three models are Llama 3.2 1B Instruct, Llama 3.2 3B Instruct and Qwen 2.5 1.5B Instruct. To compare the models, a UI was created to be able to access all three with a drop-down selection button. The UI used for the task is available as app.py. All three models were then given the same prompt, and the inference time and output contents was compared. The following results were observed for inference time:
 
-## Prompt: “Explain the Pythagorean theorem.”
+### Prompt: “Explain the Pythagorean theorem.”
 Llama 1B: 32s
+
 Llama 3B: 106s
+
 Qwen: 105s
 
 ## Prompt: “Why is the sky blue?”
 Llama 1B: 37s
+
 Llama 3B: 140s
+
 Qwen: 283s
 
 ## Prompt: “What is the meaning of life?”
 Llama 1B: 38s
+
 Llama 3B: 237s
+
 Qwen: 99s
+
 
 For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the fastest model, with inference times well below the other two. The 3B-model being significantly slower than the 1B-model is expected, since the number of parameters is around the double. The Qwen model performed worse than expected. Even though the number of parameters is close to that of Llama 1B, the inference time was more than double, and in some cases several times larger. This suggests that Qwen 2.5 1B might be poorly optimised to run on CPU only for inference. The Llama 3B model is also likely suffering from poor performance due to the hardware restrictions of a free tier of HuggingFace Spaces. 
 
