@@ -71,9 +71,9 @@ A way to improve the data further could be to rewrite the responses to be more c
 # Improvements of Llama 3.2 1B Instruct
 To improve the chosen model, a model-centric approach was taken. First, the LoRA capacity was increased by changing the LoRA rank from 16 to 32. The model was then again tested on the same prompts as before and compared to the previous fine-tuned Llama 1B model. The output did not change from previously, so no improvement to the model could be noticed. The inference time also stayed the same, meaning the model had at least not gotten slower.
 
-Next, the training time was increased by changing the maximum amount of steps from 60 to 120. The LoRA rank was kept as 32. Below is the output generated from the prompt “What is the meaning of life?”. The improved model’s output was 241 words long, in comparison to the previous 142 words before improvement.
+Next, the training time was increased by changing the maximum amount of steps from 60 to 120. The LoRA rank was kept as 32. Below is the output generated from the prompt “What is the meaning of life?”. The improved model’s output was 241 words long, in comparison to the previous 142 words before improvement. Whether the new output is of higher quality is rather subjective, but reading the two outputs one could argue that the newer one is actually an improvement over the old one. Not only is it longer, but it feels more well put together.
 
-• Prompt: “What is the meaning of life?”. Inference time: 44s
+Prompt: “What is the meaning of life?”. Inference time: 44s
 
 	Model output:
 	“What a profound and intriguing question! The meaning of life is a subject that has puzzled philosophers, theologians, and everyday people for centuries. There is no one definitive answer, as the answer can vary greatly depending on one's 	beliefs, values, and perspectives. However, I can offer some insights and perspectives that might be helpful.
