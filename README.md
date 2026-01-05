@@ -75,7 +75,7 @@ Next, the training time was increased by changing the maximum amount of steps fr
 
 Prompt: “What is the meaning of life?”. Inference time: 44s
 
-	Model output:
+	Llama 3.2 1B with LoRA capacity increase and longer training
 	“What a profound and intriguing question! The meaning of life is a subject that has puzzled philosophers, theologians, and everyday people for centuries. There is no one definitive answer, as the answer can vary greatly depending on one's 	beliefs, values, and perspectives. However, I can offer some insights and perspectives that might be helpful.
 
 	One possible perspective is that the meaning of life is to find and fulfill our purpose, 	passions, and values. Many people find meaning and purpose in their work, relationships, or 	personal growth. Others might find meaning in their spiritual beliefs, faith, or the pursuit of 	happiness.
