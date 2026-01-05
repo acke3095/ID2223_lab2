@@ -67,3 +67,24 @@ A third approach model-centric approach could be to train the model longer by in
 To improve a model with a data-centric approach, the focus is on enhancing the quality of the training data in order to get improved performance. The models used so far were fine-tuned on the FineTome-100k dataset, meaning 100000 rows of training examples. Since these training examples are likely of varying quality, one way to improve the data could be to simply reduce the size of the training set and only keep a subset of high-quality responses. 
 
 A way to improve the data further could be to rewrite the responses to be more concise in terms of tone and style. This could make the LLM output answers that feel more professional, or better fit the context. If the model is fine-tuned for a very specific task, the performance could be further improved by using a dataset of examples directly related to that task. This could make the model more accurate and less vague when it comes to that specific area.
+
+# Improvements of Llama 3.2 1B Instruct
+To improve the chosen model, a model-centric approach was taken. First, the LoRA capacity was increased by changing the LoRA rank from 16 to 32. The model was then again tested on the same prompts as before and compared to the previous fine-tuned Llama 1B model. The output did not change from previously, so no improvement to the model could be noticed. The inference time also stayed the same, meaning the model had at least not gotten slower.
+
+Next, the training time was increased by changing the maximum amount of steps from 60 to 120. The LoRA rank was kept as 32. Below is the output generated from the prompt “What is the meaning of life?”. The improved model’s output was 241 words long, in comparison to the previous 142 words before improvement.
+
+• Prompt: “What is the meaning of life?”. Inference time: 44s
+
+	Model output:
+	“What a profound and intriguing question! The meaning of life is a subject that has puzzled philosophers, theologians, and everyday people for centuries. There is no one definitive answer, as the answer can vary greatly depending on one's 	beliefs, values, and perspectives. However, I can offer some insights and perspectives that might be helpful.
+
+	One possible perspective is that the meaning of life is to find and fulfill our purpose, 	passions, and values. Many people find meaning and purpose in their work, relationships, or 	personal growth. Others might find meaning in their spiritual beliefs, faith, or the pursuit of 	happiness.
+
+	Another perspective is that the meaning of life is to contribute to the greater good, to make a 	positive impact on the world, and to leave a lasting legacy. This might involve making a 	difference in one's community, helping others, or preserving the environment.
+
+	Some people also believe that the meaning of life is to explore and understand the world 	around us. This might involve scientific inquiry, cultural exploration, or philosophical 	reflection.
+
+	Ultimately, the meaning of life is a deeply personal and subjective matter. What gives 	meaning to one person might not have the same significance for another. The best way to 	find the meaning of life is to explore your own thoughts, feelings, and values, and to live 	your life with intention, purpose, and passion.
+
+	Would you like me to explore any specific aspect of the meaning of life further?”
+
