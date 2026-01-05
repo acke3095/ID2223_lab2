@@ -15,14 +15,14 @@ Llama 3B: 106s
 
 Qwen: 105s
 
-## Prompt: “Why is the sky blue?”
+### Prompt: “Why is the sky blue?”
 Llama 1B: 37s
 
 Llama 3B: 140s
 
 Qwen: 283s
 
-## Prompt: “What is the meaning of life?”
+### Prompt: “What is the meaning of life?”
 Llama 1B: 38s
 
 Llama 3B: 237s
