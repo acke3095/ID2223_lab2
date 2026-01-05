@@ -8,20 +8,17 @@ The LLM has been fine tuned in the code provided in the notebook file.
 # Comparison of Different Models
 Three different models were fine-tuned on the same dataset and uploaded to HuggingFace for comparison. The three models are Llama 3.2 1B Instruct, Llama 3.2 3B Instruct and Qwen 2.5 1.5B Instruct. To compare the models, a UI was created to be able to access all three with a drop-down selection button. The UI used for the task is available as app.py. All three models were then given the same prompt, and the inference time and output contents was compared. The following results were observed for inference time:
 
-Prompt: “Explain the Pythagorean theorem.”
-
+## Prompt: “Explain the Pythagorean theorem.”
 Llama 1B: 32s
 Llama 3B: 106s
 Qwen: 105s
 
-Prompt: “Why is the sky blue?”
-
+## Prompt: “Why is the sky blue?”
 Llama 1B: 37s
 Llama 3B: 140s
 Qwen: 283s
 
-Prompt: “What is the meaning of life?”
-
+## Prompt: “What is the meaning of life?”
 Llama 1B: 38s
 Llama 3B: 237s
 Qwen: 99s
@@ -30,8 +27,7 @@ For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the
 
 The “quality” of the prompts was also evaluated for the different input prompts. The outputs of the prompt “What is the meaning of life?” for the three models were as follows:
 
-Llama 1B
-
+## Llama 1B
 “What a profound question! As a helpful and friendly assistant fine-tuned from Llama 3.2 1B, I'd like to say that the meaning of life is subjective 
 and can vary greatly from person to person. However, I can offer some insights based on various perspectives and philosophies. 
 	
@@ -43,7 +39,7 @@ person meaning might not be the same for another.
 
 Would you like to explore this topic further or discuss how you find meaning and purpose in your life?”
 
-Llama 3B
+## Llama 3B
 
 "What a profound and intriguing question! The meaning of life is a topic that has puzzled philosophers, theologians, scientists, and everyday 
 people for centuries. While there's no one definitive answer, here are some perspectives to consider:
@@ -66,8 +62,7 @@ the meaning of life is multifaceted and can vary greatly from person to person.
 
 What do you think? How do you find meaning in your life?"
 
-Qwen
-
+## Qwen
 “As an AI language model, I don't have personal beliefs or opinions, but I can offer some common perspectives on the meaning of life. One common 
 perspective is that the meaning of life is to find happiness and fulfillment. This 	can be achieved by pursuing one's passions, fulfilling one's 
 goals, and living a meaningful 	life. Another perspective is that the meaning of life is to find purpose and purpose is found in 	contributing to 
@@ -98,18 +93,26 @@ To improve the chosen model, a model-centric approach was taken. First, the LoRA
 
 Next, the training time was increased by changing the maximum amount of steps from 60 to 120. The LoRA rank was kept as 32. Below is the output generated from the prompt “What is the meaning of life?”. The improved model’s output was 241 words long, in comparison to the previous 142 words before improvement. Whether the new output is of higher quality is rather subjective, but reading the two outputs one could argue that the newer one is actually an improvement over the old one. Not only is it longer, but it feels more well put together. The inference time was sligthly increased from 38s to 44s. Whether this increase is worth the improvement in output quality depends on the use case, but for this assignment it was deemed accaptable as a trade-off for the longer and more in-depth output of the model.
 
-Prompt: “What is the meaning of life?”. Inference time: 44s
+## Prompt: “What is the meaning of life?”. Inference time: 44s
 
-	Llama 3.2 1B with LoRA capacity increase and longer training
-	“What a profound and intriguing question! The meaning of life is a subject that has puzzled philosophers, theologians, and everyday people for centuries. There is no one definitive answer, as the answer can vary greatly depending on one's 	beliefs, values, and perspectives. However, I can offer some insights and perspectives that might be helpful.
+### Llama 3.2 1B with LoRA capacity increase and longer training
+“What a profound and intriguing question! The meaning of life is a subject that has puzzled philosophers, theologians, and everyday people for 
+centuries. There is no one definitive answer, as the answer can vary greatly depending on one's beliefs, values, and perspectives. However, I 
+can offer some insights and perspectives that might be helpful.
 
-	One possible perspective is that the meaning of life is to find and fulfill our purpose, 	passions, and values. Many people find meaning and purpose in their work, relationships, or 	personal growth. Others might find meaning in their spiritual beliefs, faith, or the pursuit of 	happiness.
+One possible perspective is that the meaning of life is to find and fulfill our purpose, passions, and values. Many people find meaning and 
+purpose in their work, relationships, or personal growth. Others might find meaning in their spiritual beliefs, faith, or the pursuit of 
+happiness.
 
-	Another perspective is that the meaning of life is to contribute to the greater good, to make a 	positive impact on the world, and to leave a lasting legacy. This might involve making a 	difference in one's community, helping others, or preserving the environment.
+Another perspective is that the meaning of life is to contribute to the greater good, to make a positive impact on the world, and to leave a 
+lasting legacy. This might involve making a 	difference in one's community, helping others, or preserving the environment.
 
-	Some people also believe that the meaning of life is to explore and understand the world 	around us. This might involve scientific inquiry, cultural exploration, or philosophical 	reflection.
+Some people also believe that the meaning of life is to explore and understand the world around us. This might involve scientific inquiry, 
+cultural exploration, or philosophical 	reflection.
 
-	Ultimately, the meaning of life is a deeply personal and subjective matter. What gives 	meaning to one person might not have the same significance for another. The best way to 	find the meaning of life is to explore your own thoughts, feelings, and values, and to live 	your life with intention, purpose, and passion.
+Ultimately, the meaning of life is a deeply personal and subjective matter. What gives 	meaning to one person might not have the same 
+significance for another. The best way to find the meaning of life is to explore your own thoughts, feelings, and values, and to live your 
+life with intention, purpose, and passion.
 
-	Would you like me to explore any specific aspect of the meaning of life further?”
+Would you like me to explore any specific aspect of the meaning of life further?”
 
