@@ -6,7 +6,7 @@ The files app.py and requirements.txt are used in the HuggingFace Space https://
 The LLM has been fine tuned in the code provided in the notebook file.
 
 # Comparison of Different Models
-Three different models were fine-tuned on the same dataset and uploaded to HuggingFace for comparison. The three models are Llama 3.2 1B Instruct, Llama 3.2 3B Instruct and Qwen 2.5 1.5B Instruct. To compare the models, a UI was created to be able to access all three with a drop-down selection button. The UI used for the task is available as app.py. All three models were then given the same prompt, and the inference time and output contents was compared. The following results were observed for inference time:
+Three different models were fine-tuned on the same dataset and uploaded to HuggingFace for comparison. The three models are Llama 3.2 1B Instruct, Llama 3.2 3B Instruct and Qwen 2.5 1.5B Instruct. To compare the models, a UI was created to be able to compare models with a drop-down selection button. The UI used for the task is available as app.py. All three fine-tuned models and the base version of the Llama 1B model were then given the same prompt, and the inference time and output contents was compared. The following results were observed for inference time:
 
 ### Prompt: “Explain the Pythagorean theorem.”
 Llama 1B: 32s
@@ -15,12 +15,16 @@ Llama 3B: 106s
 
 Qwen: 105s
 
+Vanilla Llama 1B: 52s
+
 ### Prompt: “Why is the sky blue?”
 Llama 1B: 37s
 
 Llama 3B: 140s
 
 Qwen: 283s
+
+Vanilla Llama 1B: 99s
 
 ### Prompt: “What is the meaning of life?”
 Llama 1B: 38s
@@ -29,8 +33,10 @@ Llama 3B: 237s
 
 Qwen: 99s
 
+Vanilla Llama 1B: 49s
 
-For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the fastest model, with inference times well below the other two. The 3B-model being significantly slower than the 1B-model is expected, since the number of parameters is around the double. The Qwen model performed worse than expected. Even though the number of parameters is close to that of Llama 1B, the inference time was more than double, and in some cases several times larger. This suggests that Qwen 2.5 1B might be poorly optimised to run on CPU only for inference. The Llama 3B model is also likely suffering from poor performance due to the hardware restrictions of a free tier of HuggingFace Spaces. 
+
+For the inference time comparison, it is clear that Llama 3.2 1B Instruct is the fastest model, with inference times well below the other two fine-tuned models. It also has lower inference time than the vanilla Llama 1B model. The 3B-model being significantly slower than the 1B-model is expected, since the number of parameters is around the double. The Qwen model performed worse than expected. Even though the number of parameters is close to that of Llama 1B, the inference time was more than double, and in some cases several times larger. This suggests that Qwen 2.5 1B might be poorly optimised to run on CPU only for inference. The Llama 3B model is also likely suffering from poor performance due to the hardware restrictions of a free tier of HuggingFace Spaces. 
 
 The “quality” of the prompts was also evaluated for the different input prompts. The outputs of the prompt “What is the meaning of life?” for the three models were as follows:
 
@@ -78,11 +84,27 @@ while others believe that the meaning of life is to find enlightenment and spiri
 personal concept that varies from person to person. It is up to each individual to determine what brings them happiness, fulfillment, and purpose, 
 and to find meaning in their life journey.”
 
+### Vanilla Llama 1B
+"whispers Ah, the meaning of life... It's a question that has puzzled philosophers, theologians, and everyday humans for centuries. As a wise and knowledgeable assistant, I'll try to provide some insights.
+
+From my vast knowledge base, I'll offer a few perspectives:
+
+Self-actualization: According to Carl Jung, the meaning of life is to realize one's full potential and live a life of authenticity, creativity, and self-discovery.
+Hedonistic: Epicurus believed that the meaning of life is to seek pleasure and avoid pain, as long as it doesn't harm others.
+Existential: Jean-Paul Sartre thought that the meaning of life is to create one's own values and purpose, and to take responsibility for one's choices.
+Religious: Many spiritual traditions believe that the meaning of life is to fulfill a higher purpose or to attain spiritual enlightenment.
+Material: Some thinkers argue that the meaning of life is to accumulate wealth, possessions, and earthly pleasures.
+
+These perspectives are not mutually exclusive, and the true meaning of life may be a complex interplay of factors.
+
+As a friendly assistant, I'd like to offer a more... llama-like perspective: "The meaning of life is to find joy in the journey, no matter what path you choose." (Or, in my case, "The meaning of life is to help others, one question at a time...")
+
+Which perspective resonates with you, or do you have a different understanding of the meaning of life?"
+
 ### Evaluation
-Since quality can be subjective, it was hard to define a metric of how good each response is. The response of Llama 3B is the longest, and even has highlighted words to make reading easier. The response of the Qwen model share some similarities with that of Llama 1B, despite being a completely different model. This could probably be explained as an effect of fine-tuning, as all models were fine-tuned on the same dataset and therefore learned to respond in similar ways.
+Since quality can be subjective, it was hard to define a metric of how good each response is. The response of Llama 3B is the longest of the fine-tuned models, and even has highlighted words to make reading easier. The response of the Qwen model share some similarities with that of Llama 1B, despite being a completely different model. This could probably be explained as an effect of fine-tuning, as all models were fine-tuned on the same dataset and therefore learned to respond in similar ways.
 
-In the end, Llama 1B was chosen as the model best fit for the task of running CPU inference on HuggingFace Spaces, mostly due to the inference time being so much lower than the other two models. While the output text of the other two models is probably of at least equal quality (if not higher), the slow inference made them feel less usable than Llama 1B.
-
+In the end, Llama 1B was chosen as the model best fit for the task of running CPU inference on HuggingFace Spaces, mostly due to the inference time being so much lower than the other two fine-tuned models. While the output text of the other two models is probably of at least equal quality (if not higher), the slow inference made them feel less usable than Llama 1B.
 
 # Improvements Using a Model-Centric Approach
 A model-centric approach to improving the model means to make changes to the model or training process, while keeping the data unchanged. One such approach would be to switch the model itself for another, more competent one. For this assignment, it was important to have a model that was possible to use for CPU inference on a HuggingFace Space and the Llama 1B model was therefore chosen according to the performance comparison above.
@@ -124,3 +146,129 @@ life with intention, purpose, and passion.
 
 Would you like me to explore any specific aspect of the meaning of life further?”
 
+# Comparison With Vanilla Model
+The fine-tuned Llama 1B model has lower inference time than the vanilla version of the model. However, the generated output of the vanilla model is significantly longer, and with a different tone. The vanilla model had a more "quirky" and joking tone compared to all the fine-tuned models. Which style is preferred will vary by user, but the longer generated output by the vanilla model is generally better than the fine-tuned one as it gives more depth to the answer.
+
+The training loss during the fine-tuning process of the Llama 1B model was quite noisy. However, values over 1 seem to become somewhat less common as training progresses around 90 steps, which might indicate a slight improvement by the training process. The training loss not showing a clear decreasing trend might be the reason why the generated output of the model does not show a higher quality than the vanilla model. Since improvements in generated output between the first fine-tuned 1B model and the later improved-upon fine-tuned 1B model were observed, it suggests that there might at least be some improvements achieved by the fine-tuning process after also attempting model-centric improvements. Below is the training loss for the 120 step training process of the improved Llama 1B model:
+
+Step	Training Loss
+1	0.880300
+2	0.945600
+3	1.163100
+4	1.030700
+5	0.827200
+6	1.073100
+7	0.715000
+8	1.126800
+9	1.035400
+10	0.873700
+11	0.936800
+12	1.158300
+13	1.060400
+14	0.833700
+15	1.032800
+16	0.731000
+17	1.134700
+18	0.991100
+19	0.924900
+20	1.007300
+21	0.892300
+22	0.877300
+23	1.105300
+24	0.991300
+25	0.755100
+26	0.943800
+27	0.964000
+28	0.917300
+29	1.176600
+30	1.178200
+31	0.795500
+32	0.701400
+33	0.737100
+34	0.698200
+35	0.879400
+36	1.052400
+37	1.015900
+38	0.808100
+39	0.894200
+40	1.125900
+41	0.964600
+42	1.164400
+43	0.865200
+44	0.950500
+45	0.857800
+46	0.983300
+47	0.880900
+48	0.759200
+49	1.131000
+50	1.087500
+51	0.681900
+52	1.070400
+53	1.307700
+54	0.803600
+55	1.222500
+56	1.253600
+57	0.852900
+58	0.944000
+59	0.900700
+60	1.053000
+61	0.845200
+62	1.244200
+63	0.817200
+64	1.385700
+65	1.024400
+66	0.891000
+67	0.956400
+68	0.926400
+69	1.013400
+70	0.755300
+71	0.608200
+72	0.907300
+73	1.014300
+74	1.122100
+75	0.828400
+76	0.810400
+77	1.082000
+78	0.879500
+79	1.264700
+80	0.985500
+81	0.768800
+82	0.985400
+83	1.020100
+84	1.130300
+85	0.903400
+86	0.713200
+87	0.993700
+88	0.746900
+89	0.975000
+90	1.248600
+91	0.899400
+92	0.701400
+93	0.939400
+94	0.808000
+95	0.665600
+96	0.705300
+97	0.785900
+98	0.847300
+99	0.865600
+100	0.852000
+101	0.791000
+102	0.835200
+103	0.917800
+104	0.864000
+105	1.122400
+106	0.975000
+107	1.107000
+108	0.694100
+109	0.828500
+110	0.881600
+111	0.735000
+112	0.969300
+113	1.121600
+114	1.042300
+115	0.873600
+116	0.880500
+117	0.674300
+118	0.936600
+119	0.893700
+120	0.513900
